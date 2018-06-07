@@ -1,0 +1,57 @@
+<table [class]="cssClass" [style.table-layout]="tableLayout">
+  <colgroup>
+    <col *ngIf="showCheckbox && selectionMode !== null" width="30px">
+    <col *ngIf="expandedTemplate" width="30px">
+    <ng-container *ngFor="let c of columns">
+      <col *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" span="1" [width]="c.width">
+    </ng-container>
+  </colgroup>
+  <thead>
+  <tr>
+    <th *ngIf="showCheckbox && selectionMode !== null">
+      <input *ngIf="selectionMode == 'multi'" type="checkbox" [checked]="processedData.length == selectedRows.size"
+             (change)="$event.target.checked ? selectAll() : clearSelected()"/>
+    </th>
+    <th *ngIf="expandedTemplate"></th>
+    <ng-container *ngFor="let c of columns; let i = index">
+      <th *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" [class]="c.cssClass"
+          style="cursor: pointer" (click)="sort(i)">
+        <span *ngIf="sortedColumn == i && !sortedDesc">&#9650;</span>
+        <span *ngIf="sortedColumn == i && sortedDesc">&#9660;</span>
+        {{c.label}}
+      </th>
+    </ng-container>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let row of pagedData; let i = index">
+    <tr [ngClass]="{'active': selectedRows.has(i)}" (click)="updateSelected(i)">
+      <td *ngIf="showCheckbox && selectionMode !== null"><input type="checkbox" [checked]="selectedRows.has(i)"/></td>
+      <td *ngIf="expandedTemplate">
+        <span *ngIf="!selectedRows.has(i)">&#9658;</span>
+        <span *ngIf="selectedRows.has(i)">&#9660;</span>
+      </td>
+      <ng-container *ngFor="let c of columns">
+        <td *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)">
+          <ng-template #defaultTemplate let-value="value">{{value}}</ng-template>
+          <ng-template [ngTemplateOutlet]="c.template || defaultTemplate"
+                       [ngTemplateOutletContext]="{object: row, value: row[c.property]}">
+          </ng-template>
+        </td>
+      </ng-container>
+    </tr>
+    <tr *ngIf="expandedTemplate && selectedRows.has(i)">
+      <td [attr.colspan]="columns.length + (showCheckbox ? 1 : 0) + (expandedTemplate ? 1 : 0)">
+        <ng-template [ngTemplateOutlet]="expandedTemplate" [ngTemplateOutletContext]="{object: row}"></ng-template>
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+<nav *ngIf="paginate" aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{'disabled': page <= 1}" (click)="changePage(page - 1)"><a class="page-link">Previous</a></li>
+    <li *ngFor="let i of pages" class="page-item" [ngClass]="{'active': page == i}"><a class="page-link" (click)="changePage(i)">{{i}}</a></li>
+    <li class="page-item" [ngClass]="{'disabled': page >= pages.length}" (click)="changePage(page + 1)"><a class="page-link">Next</a></li>
+  </ul>
+</nav>

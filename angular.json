@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "ng-datatable": {
+      "root": "projects/ng-datatable",
+      "sourceRoot": "projects/ng-datatable/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-datatable/tsconfig.lib.json",
+            "project": "projects/ng-datatable/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ng-datatable/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-datatable/src/test.ts",
+            "tsConfig": "projects/ng-datatable/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-datatable/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-datatable/tsconfig.lib.json",
+              "projects/ng-datatable/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Sandbox"
