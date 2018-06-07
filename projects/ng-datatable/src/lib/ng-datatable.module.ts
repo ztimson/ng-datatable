@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
-import {NgDatatableComponent} from './ng-datatable.component';
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+
+import {NgDatatableComponent} from './ng-datatable.component';
 
 @NgModule({
   imports: [

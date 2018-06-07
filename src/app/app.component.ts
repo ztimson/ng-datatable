@@ -28,7 +28,7 @@ class Person {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('table') dataTable: NgDatatableComponent;
+  @ViewChild('table') datatable: NgDatatableComponent;
   @ViewChild('age') ageTemplate;
 
   columns = [];
@@ -57,8 +57,8 @@ export class AppComponent implements OnInit {
     ];
 
     this.search.subscribe(text => {
-      this.dataTable.clearFilters(false);
-      this.dataTable.addFilter(row => JSON.stringify(row).toLowerCase().indexOf(text.toLowerCase()) != -1);
+      this.datatable.clearFilters(false);
+      this.datatable.addFilter(row => JSON.stringify(row).toLowerCase().indexOf(text.toLowerCase()) != -1);
     });
   }
 }
