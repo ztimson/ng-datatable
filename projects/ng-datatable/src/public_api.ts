@@ -1,3 +1,3 @@
 export * from './lib/column'
-export * from './lib/ng-dataTable.component';
-export * from './lib/ng-dataTable.module';
+export * from './lib/ng-datatable.component';
+export * from './lib/ng-datatable.module';

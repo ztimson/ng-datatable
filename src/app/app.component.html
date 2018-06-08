@@ -1,24 +1,19 @@
-Table CSS <input [(ngModel)]="tableCSS">
-Selection Mode <select [(ngModel)]="selectionMode">
+Table CSS
+<input [(ngModel)]="tableCSS"> Selection Mode
+<select [(ngModel)]="selectionMode">
   <option>None</option>
   <option>single</option>
   <option>multi</option>
 </select>
-Checkbox <input type="checkbox" [(ngModel)]="checkbox">
-Expandable <input type="checkbox" [(ngModel)]="expandable">
-<br><br>
-<input placeholder="Search" (keyup)="search.next($event.target.value)">
+Checkbox
+<input type="checkbox" [(ngModel)]="checkbox"> Expandable
+<input type="checkbox" [(ngModel)]="expandable">
 <br>
-Selected: {{table.selectedRows.size}}/{{table.processedData.length}}
-<ng-datatable #table
-                    [cssClass]="tableCSS"
-                    [columns]="columns"
-                    [data]="data"
-                    [expandedTemplate]="expandable ? expanded : null"
-                    [showCheckbox]="checkbox"
-                    [paginate]="false"
-                    [selectionMode]="selectionMode == 'None' ? null : selectionMode"
-                    (rowSelected)="log($event)">
+<br>
+<input placeholder="Search" (keyup)="search.next($event.target.value)">
+<br> Selected: {{table.selectedRows.size}}/{{table.processedData.length}}
+<ng-datatable #table [cssClass]="tableCSS" [columns]="columns" [data]="data" [expandedTemplate]="expandable ? expanded : null"
+  [showCheckbox]="checkbox" [paginate]="false" [selectionMode]="selectionMode == 'None' ? null : selectionMode" (rowSelected)="log($event)">
   <ng-template #expanded let-object="object">
     Hello {{object.firstName}} {{object.lastName}}, How are you today?
     <span *ngIf="object.age < 18">I can see that you are under age.</span>
