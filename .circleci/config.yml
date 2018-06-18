@@ -34,7 +34,7 @@ jobs:
 
       - run:
           name: Publish
-          command:
+          command: |
             if ["${CIRCLE_BRANCH}" === "production"]; then
               cd dist/ng-datatable
               npm publish
