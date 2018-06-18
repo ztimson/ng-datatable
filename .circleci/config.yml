@@ -14,13 +14,20 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: yarn install
+      - run:
+          name: Install
+          command: yarn
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: yarn test
-
-      - run: yarn 
+      - run: 
+          name: Build
+          command: yarn build-datatable
+      
+      - save_cahce:
+          paths: 
+            - dist/ng-datatable
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
