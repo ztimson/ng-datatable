@@ -1,8 +1,19 @@
 {
   "name": "@ztimson/ng-datatable",
   "version": "1.0.0",
+  "homepage": "https://github.com/ztimson/ng-datatable",
+  "license": "Apache-2.0",
+  "author": {
+    "email": "zaktimson@gmail.com",
+    "name": "Zakary Timson",
+    "url": "https://zakscode.com"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+  },
+  "files": [
+    "/README.md",
+    "/LICENSE"
+  ]
 }
