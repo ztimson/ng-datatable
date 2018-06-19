@@ -1,27 +1,131 @@
-# Sandbox
+# ng-datatable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+[![CircleCI](https://circleci.com/gh/ztimson/ng-datatable/tree/master.svg?style=svg)](https://circleci.com/gh/ztimson/ng-datatable/tree/master)
 
-## Development server
+A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind but its simple table structor makes it easy styleable.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[View on NPM](https://www.npmjs.com/package/@ztimson/ng-datatable)
+[View the demo here]()
 
-## Code scaffolding
+## Installing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1.  Install package `npm install @ztimson/ng-datatable --save`
+2.  Import into module
 
-## Build
+```Typescript
+import {NgDatatableModule} from '@ztimsonm/ng-datatable'
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  imports: [
+    NgDatatableModule,
+    ...
+  ],
+  ...
+})
+export class AppModule { }
+```
 
-## Running unit tests
+3.  Add to template
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```HTML
+<ng-datatable [columns]="columns" [data]="data"></ng-datatable>
+```
 
-## Running end-to-end tests
+## API
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### NgDatatableComponent
 
-## Further help
+Exported As: `NgDatatableComponent`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Selector: `ng-datatable`
+
+#### Properties
+
+| Name                                                      | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- |
+| @Input() cssClass: string                                 | Class added to the main table element                     |
+| @Input() columns: Column[]                                | Columns to display on table                               |
+| @Input() expandedTemplate: TemplateRef<any>               | An Angular template to render expanded rows               |
+| @Input() mobileBreakpoint: number                         | Hide mobile columns past this point. Default: 768px       |
+| @Input() pageLength: number                               | Number of rows per page. Default 20                       |
+| @Input() page: number                                     | Current page                                              |
+| @Input() paginate: boolean                                | Paginate rows or display all at once. Default true        |
+| @Input() selectionMode: null/'single'/'multi'             | Allow selecting none, single or multiple rows at once     |
+| @Input() showCheckbox: boolean                            | Show checkbox' for mass selecting                         |
+| @Input() tableLayout: 'auto'/'fixed'                      | CSS table layout. Defaults to 'auto'                      |
+| @Output() filterChanged: EventEmitter<(a, b) => 1/0/-1[]> | Applied filters                                           |
+| @Output() pageChanged: EventEmitter<number>               | New page                                                  |
+| @Output() selectionChanged: EventEmitter<any[]>           | Selected rows                                             |
+| pagedData: any[]                                          | Array of rows on current page after sorting and filtering |
+| processedData: any[]                                      | Array of remaining rows after sorting and filtering       |
+| selectedRows: Set<number>                                 | Index numbers of rows currently selected                  |
+
+#### Methods
+
+##### addFilter(...filters)
+
+Add function to filter rows by.
+
+| paramater                           | Description               |
+| ----------------------------------- | ------------------------- |
+| ...filters: (el, i, arr) => boolean | Filters to add to dataset |
+
+##### changePage(page)
+
+Change the current selected page.
+
+| paramater    | Description       |
+| ------------ | ----------------- |
+| page: number | Page to change to |
+
+##### clearFilters(update)
+
+Clear filters being applied to. Update can be set to false to prevent instant filtering in cases where you may be applying filters right after.
+
+| paramater       | Description             |
+| --------------- | ----------------------- |
+| update: boolean | Clear filters imedietly |
+
+##### clearSelected()
+
+Clear all selected rows.
+
+##### selectAll()
+
+Select all rows. Ignores pagination but not filtering.
+
+##### sort(columnIndex: number, desc?: boolean)
+
+Sort the grid by column index
+
+| paramater           | Description                  |
+| ------------------- | ---------------------------- |
+| columnIndex: number | Column index to sort by      |
+| desc: boolean       | Sort ascending or descending |
+
+##### updateSelected(index)
+
+Virtually click on row causing selection/expanding/collapsing
+
+| paramater     | Description   |
+| ------------- | ------------- |
+| index: number | Row to select |
+
+### Column
+
+Exported As: `Column`
+
+#### Properties
+
+| Name                       | Description                     |
+| -------------------------- | ------------------------------- |
+| cssClass: string           | Style to add to column header   |
+| hide: boolean              | Hide column                     |
+| hideMobile: boolean        | Hide column on mobile devices   |
+| initialSort: 'asc'/'desc'  | Sort the column initially       |
+| label: string              | Column header label             |
+| property: string           | Property to display             |
+| sort: boolean              | Enable/Disable sorting          |
+| sortFn: (a, b) => 1/0/-1   | Custom function to sort rows by |
+| template: TemplateRef<any> | Template to render row with     |
+| width: string              | CSS width property              |
