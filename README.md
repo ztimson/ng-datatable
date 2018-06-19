@@ -5,7 +5,8 @@
 A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind but its simple table structor makes it easy styleable.
 
 [View on NPM](https://www.npmjs.com/package/@ztimson/ng-datatable)
-[View the demo here]()
+
+[View the demo here](https://angular-rzq6xm.stackblitz.io)
 
 ## Installing
 
