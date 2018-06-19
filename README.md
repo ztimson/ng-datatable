@@ -2,11 +2,24 @@
 
 [![CircleCI](https://circleci.com/gh/ztimson/ng-datatable/tree/master.svg?style=svg)](https://circleci.com/gh/ztimson/ng-datatable/tree/master)
 
-A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind but its simple table structor makes it easy styleable.
+A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind but its simple table structor makes it easy to style.
+
+Features:
+
+- Templating columns
+- Sorting
+- Filtering
+- Pagination
+- Expanding/Master Detail
+- Selection Modes
+- Easy CSS
+- Mobile column hiding
+- Checkboxes
+
 
 [View on NPM](https://www.npmjs.com/package/@ztimson/ng-datatable)
 
-[View the demo here](https://angular-rzq6xm.stackblitz.io)
+[View the demo here](https://stackblitz.com/edit/angular-rzq6xm)
 
 ## Installing
 
