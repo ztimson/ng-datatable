@@ -64,6 +64,7 @@ Selector: `ng-datatable`
 | @Input() pageLength: number                               | Number of rows per page. Default 20                       |
 | @Input() page: number                                     | Current page                                              |
 | @Input() paginate: boolean                                | Paginate rows or display all at once. Default true        |
+| @Input() paginateCssClass: string                         | Class added to the paginator
 | @Input() selectionMode: null/'single'/'multi'             | Allow selecting none, single or multiple rows at once     |
 | @Input() showCheckbox: boolean                            | Show checkbox' for mass selecting                         |
 | @Input() tableLayout: 'auto'/'fixed'                      | CSS table layout. Defaults to 'auto'                      |

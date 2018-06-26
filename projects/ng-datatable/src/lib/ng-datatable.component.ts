@@ -14,6 +14,7 @@ export class NgDatatableComponent implements OnInit {
   @Input() pageLength: number = 20; // Number of rows per page
   @Input() page: number = 1; // Current page number
   @Input() paginate: boolean = true; // Should we paginate results
+  @Input() paginateCssClass: string; // CSS class to add to paginator
   @Input() selectionMode: null | 'single' | 'multi'; // Allow selecting no/single/multiple rows
   @Input() showCheckbox: boolean; // Selection checkboxes
   @Input() tableLayout: 'auto' | 'fixed' = 'auto'; // How column widths are decided
