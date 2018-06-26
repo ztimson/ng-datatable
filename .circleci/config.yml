@@ -30,6 +30,7 @@ jobs:
       - run:
           name: Publish
           command: |
+            echo "${CIRCLE_BRANCH}"
             if ["${CIRCLE_BRANCH}" === "production"]; then
               cp README.md dist/ng-datatable/
               cp LICENSE dist/ng-datatable/
