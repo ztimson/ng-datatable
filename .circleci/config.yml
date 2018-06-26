@@ -27,6 +27,12 @@ jobs:
           name: Build
           command: yarn build-datatable
 
+      - run:
+          name: Copy README and LICENSE
+          command: |
+            cp LICENSE dist/ng-datatable/
+            cp README.md dist/ng-datatable/
+
       - store_artifacts:
           path: dist/ng-datatable
 
@@ -34,9 +40,6 @@ jobs:
           command: |
             echo "${CIRCLE_BRANCH}"
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
-              cp README.md dist/ng-datatable/
-              cp LICENSE dist/ng-datatable/
-              cd dist/ng-datatable
               yarn ci-publish
             else
               echo "Only the production branch is published"
