@@ -22,22 +22,19 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      - run: 
+
+      - run:
           name: Build
           command: yarn build-datatable
-      
-      - save_cache:
-          paths: 
-            - dist/ng-datatable
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Publish
           command: |
             if ["${CIRCLE_BRANCH}" === "production"]; then
+              cp README.md dist/ng-datatable/
+              cp LICENSE dist/ng-datatable/
               cd dist/ng-datatable
-              npm publish
+              yarn ci-publish
             else
               echo "Only the production branch is published"
             fi

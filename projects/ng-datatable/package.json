@@ -1,6 +1,6 @@
 {
   "name": "@ztimson/ng-datatable",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/ztimson/ng-datatable",
   "license": "Apache-2.0",
   "author": {
@@ -12,10 +12,6 @@
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   },
-  "files": [
-    "/README.md",
-    "/LICENSE"
-  ],
   "keywords": [
     "angular",
     "typescript",
