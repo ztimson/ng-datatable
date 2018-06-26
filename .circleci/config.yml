@@ -27,11 +27,13 @@ jobs:
           name: Build
           command: yarn build-datatable
 
-      - run:
-          name: Publish
+      - store_artifacts:
+          path: dist/ng-datatable
+
+      - deploy:
           command: |
             echo "${CIRCLE_BRANCH}"
-            if ["${CIRCLE_BRANCH}" === "production"]; then
+            if [ "${CIRCLE_BRANCH}" == "production" ]; then
               cp README.md dist/ng-datatable/
               cp LICENSE dist/ng-datatable/
               cd dist/ng-datatable
