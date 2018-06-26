@@ -132,15 +132,15 @@ Exported As: `Column`
 
 #### Properties
 
-| Name                       | Description                     |
-| -------------------------- | ------------------------------- |
-| cssClass: string           | Style to add to column header   |
-| hide: boolean              | Hide column                     |
-| hideMobile: boolean        | Hide column on mobile devices   |
-| initialSort: 'asc'/'desc'  | Sort the column initially       |
-| label: string              | Column header label             |
-| property: string           | Property to display             |
-| sort: boolean              | Enable/Disable sorting          |
-| sortFn: (a, b) => 1/0/-1   | Custom function to sort rows by |
-| template: TemplateRef<any> | Template to render row with     |
-| width: string              | CSS width property              |
+| Name                       | Description                         |
+| -------------------------- | ----------------------------------- |
+| cssClass: string           | Style to add to column header       |
+| hide: boolean              | Hide column                         |
+| hideMobile: boolean        | Hide column on mobile devices       |
+| initialSort: 'asc'/'desc'  | Sort the column initially           |
+| label: string              | Column header label                 |
+| property: string           | Property to display in dot notation |
+| sort: boolean              | Enable/Disable sorting              |
+| sortFn: (a, b) => 1/0/-1   | Custom function to sort rows by     |
+| template: TemplateRef<any> | Template to render row with         |
+| width: string              | CSS width property                  |

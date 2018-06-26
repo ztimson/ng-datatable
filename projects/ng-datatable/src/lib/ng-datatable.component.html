@@ -3,7 +3,7 @@
     <col *ngIf="showCheckbox && selectionMode !== null" width="30px">
     <col *ngIf="expandedTemplate" width="30px">
     <ng-container *ngFor="let c of columns">
-      <col *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" span="1" [width]="c.width">
+      <col *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" span="1" [width]="convertWidth(c.width)">
     </ng-container>
   </colgroup>
   <thead>
@@ -35,7 +35,7 @@
         <td *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)">
           <ng-template #defaultTemplate let-value="value">{{value}}</ng-template>
           <ng-template [ngTemplateOutlet]="c.template || defaultTemplate"
-                       [ngTemplateOutletContext]="{object: row, value: row[c.property]}">
+                       [ngTemplateOutletContext]="{object: row, value: dotNotation(row, c.property)}">
           </ng-template>
         </td>
       </ng-container>

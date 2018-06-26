@@ -82,6 +82,15 @@ export class NgDatatableComponent implements OnInit {
     }
   }
 
+  protected convertWidth(width) {
+    if(typeof width == 'number') return `${width}px`;
+    return width;
+  }
+
+  protected dotNotation(obj: object, prop: string) {
+    return prop.split('.').reduce((obj, prop) => obj[prop], obj);
+  }
+
   addFilter(...filters: ((row?: any, index?: number, arr?: any[]) => boolean)[]) {
     this.filters = this.filters.concat(filters);
     this.process();
