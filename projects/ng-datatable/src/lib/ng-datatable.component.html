@@ -1,4 +1,4 @@
-<table [class]="cssClass" [style.table-layout]="tableLayout">
+<table [class]="cssClass + ' ngdt'" [style.table-layout]="tableLayout">
   <colgroup>
     <col *ngIf="showCheckbox && selectionMode !== null" width="30px">
     <col *ngIf="expandedTemplate" width="30px">
@@ -6,15 +6,15 @@
       <col *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" span="1" [width]="_convertWidth(c.width)">
     </ng-container>
   </colgroup>
-  <thead>
+  <thead class="ngdt-header">
   <tr>
-    <th *ngIf="showCheckbox && selectionMode !== null">
+    <th *ngIf="showCheckbox && selectionMode !== null" class="ngdt-checkall">
       <input *ngIf="selectionMode == 'multi'" type="checkbox" [checked]="processedData.length == selectedRows.size"
              (change)="$event.target.checked ? selectAll() : clearSelected()"/>
     </th>
     <th *ngIf="expandedTemplate"></th>
     <ng-container *ngFor="let c of columns; let i = index">
-      <th *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" [class]="c.cssClass"
+      <th *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" [class]="c.cssClass + ' ngdt-column'"
           style="cursor: pointer" (click)="sort(i)">
         <span *ngIf="sortedColumn == i && !sortedDesc">&uarr;</span>
         <span *ngIf="sortedColumn == i && sortedDesc">&darr;</span>
@@ -23,16 +23,18 @@
     </ng-container>
   </tr>
   </thead>
-  <tbody>
+  <tbody class="ngdt-body">
   <ng-container *ngFor="let row of pagedData; let i = index">
-    <tr [ngClass]="{'active': selectedRows.has(i)}" (click)="updateSelected(i)">
-      <td *ngIf="showCheckbox && selectionMode !== null"><input type="checkbox" [checked]="selectedRows.has(i)"/></td>
-      <td *ngIf="expandedTemplate">
+    <tr class="ngdt-row" [ngClass]="{'active': selectedRows.has(i)}" (click)="updateSelected(i)">
+      <td *ngIf="showCheckbox && selectionMode !== null" class="ngdt-checkbox">
+        <input type="checkbox" [checked]="selectedRows.has(i)"/>
+      </td>
+      <td *ngIf="expandedTemplate" class="ngdt-expand">
         <span *ngIf="!selectedRows.has(i)">&#9698;</span>
         <span *ngIf="selectedRows.has(i)">&#9660;</span>
       </td>
       <ng-container *ngFor="let c of columns">
-        <td *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)">
+        <td *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" class="ngdt-cell">
           <ng-template #defaultTemplate let-value="value">{{value}}</ng-template>
           <ng-template [ngTemplateOutlet]="c.template || defaultTemplate"
                        [ngTemplateOutletContext]="{object: row, value: _dotNotation(row, c.property)}">
@@ -40,7 +42,7 @@
         </td>
       </ng-container>
     </tr>
-    <tr *ngIf="expandedTemplate && selectedRows.has(i)">
+    <tr *ngIf="expandedTemplate && selectedRows.has(i)" class="ngdt-detail">
       <td [attr.colspan]="columns.length + (showCheckbox ? 1 : 0) + (expandedTemplate ? 1 : 0)">
         <ng-template [ngTemplateOutlet]="expandedTemplate" [ngTemplateOutletContext]="{object: row}"></ng-template>
       </td>
@@ -48,10 +50,10 @@
   </ng-container>
   </tbody>
 </table>
-<nav *ngIf="paginate" [class]="paginateCssClass" aria-label="Page navigation">
+<nav *ngIf="paginate" [class]="paginateCssClass + 'ngdt-paginator'" aria-label="Page navigation">
   <ul class="pagination">
-    <li class="page-item" [ngClass]="{'disabled': page <= 1}" (click)="changePage(page - 1)"><a class="page-link">Previous</a></li>
-    <li *ngFor="let i of pages" class="page-item" [ngClass]="{'active': page == i}"><a class="page-link" (click)="changePage(i)">{{i}}</a></li>
-    <li class="page-item" [ngClass]="{'disabled': page >= pages.length}" (click)="changePage(page + 1)"><a class="page-link">Next</a></li>
+    <li class="page-item ngdt-next" [ngClass]="{'disabled': page <= 1}" (click)="changePage(page - 1)"><a class="page-link">Previous</a></li>
+    <li *ngFor="let i of pages" class="page-item ngdt-page" [ngClass]="{'active': page == i}"><a class="page-link" (click)="changePage(i)">{{i}}</a></li>
+    <li class="page-item ngdt-previous" [ngClass]="{'disabled': page >= pages.length}" (click)="changePage(page + 1)"><a class="page-link">Next</a></li>
   </ul>
 </nav>
