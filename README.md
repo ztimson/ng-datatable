@@ -143,4 +143,4 @@ Exported As: `Column`
 | sort: boolean              | Enable/Disable sorting              |
 | sortFn: (a, b) => 1/0/-1   | Custom function to sort rows by     |
 | template: TemplateRef<any> | Template to render row with         |
-| width: string              | CSS width property                  |
+| width: number/string       | CSS width property                  |

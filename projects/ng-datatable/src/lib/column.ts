@@ -10,5 +10,5 @@ export interface Column {
   sort?: boolean; // Allow sorting
   sortFn?: (a: any, b: any) => 1 | 0 | -1; // Custom sorting function
   template?: TemplateRef<any>; // TemplateRef to render the column
-  width?: string; // Width to give column
+  width?: number | string; // Width to give column
 }
