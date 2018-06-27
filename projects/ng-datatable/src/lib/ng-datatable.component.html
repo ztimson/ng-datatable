@@ -30,7 +30,7 @@
         <input type="checkbox" [checked]="selectedRows.has(i)"/>
       </td>
       <td *ngIf="expandedTemplate" class="ngdt-expand">
-        <span *ngIf="!selectedRows.has(i)">&#9698;</span>
+        <span *ngIf="!selectedRows.has(i)">&#9658;</span>
         <span *ngIf="selectedRows.has(i)">&#9660;</span>
       </td>
       <ng-container *ngFor="let c of columns">

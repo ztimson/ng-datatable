@@ -3,7 +3,8 @@ import {Column} from './column';
 
 @Component({
   selector: 'ng-datatable',
-  templateUrl: 'ng-datatable.component.html'
+  templateUrl: 'ng-datatable.component.html',
+  styles: ['.ngdt-expand {font-family: sans-serif;}']
 })
 export class NgDatatableComponent implements OnInit {
   // Inputs ============================================================================================================
