@@ -16,8 +16,8 @@
     <ng-container *ngFor="let c of columns; let i = index">
       <th *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" [class]="c.cssClass"
           style="cursor: pointer" (click)="sort(i)">
-        <span *ngIf="sortedColumn == i && !sortedDesc">&#9650;</span>
-        <span *ngIf="sortedColumn == i && sortedDesc">&#9660;</span>
+        <span *ngIf="sortedColumn == i && !sortedDesc">&uarr;</span>
+        <span *ngIf="sortedColumn == i && sortedDesc">&darr;</span>
         {{c.label}}
       </th>
     </ng-container>
@@ -28,7 +28,7 @@
     <tr [ngClass]="{'active': selectedRows.has(i)}" (click)="updateSelected(i)">
       <td *ngIf="showCheckbox && selectionMode !== null"><input type="checkbox" [checked]="selectedRows.has(i)"/></td>
       <td *ngIf="expandedTemplate">
-        <span *ngIf="!selectedRows.has(i)">&#9658;</span>
+        <span *ngIf="!selectedRows.has(i)">&#9698;</span>
         <span *ngIf="selectedRows.has(i)">&#9660;</span>
       </td>
       <ng-container *ngFor="let c of columns">
