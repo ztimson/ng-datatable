@@ -40,7 +40,7 @@ export class NgDatatableComponent implements OnInit {
   get data(): any[] { return this.processedData; } // Return the processed data
   @Input() set data(data: any[]) {
     this._data = data;
-    this.process();
+    this._process();
   }
 
   // ===================================================================================================================
@@ -57,7 +57,7 @@ export class NgDatatableComponent implements OnInit {
   }
 
   // Helpers ===========================================================================================================
-  private process() {
+  private _process() {
     this.clearSelected();
     this.processedData = this._data;
     this.filters.forEach(f => this.processedData = this.processedData.filter(f));
@@ -82,31 +82,31 @@ export class NgDatatableComponent implements OnInit {
     }
   }
 
-  protected convertWidth(width) {
+  _convertWidth(width) {
     if(typeof width == 'number') return `${width}px`;
     return width;
   }
 
-  protected dotNotation(obj: object, prop: string) {
+  _dotNotation(obj: object, prop: string) {
     return prop.split('.').reduce((obj, prop) => obj[prop], obj);
   }
 
   addFilter(...filters: ((row?: any, index?: number, arr?: any[]) => boolean)[]) {
     this.filters = this.filters.concat(filters);
-    this.process();
+    this._process();
     this.filterChanged.emit(this.filters);
   }
 
   changePage(page: number) {
     if(!this.paginate || page < 1 || page > this.pages.length) return;
     this.page = page;
-    this.process();
+    this._process();
     this.pageChanged.emit(this.page);
   }
 
   clearFilters(update=true) {
     this.filters = [];
-    if(update) this.process();
+    if(update) this._process();
     this.filterChanged.emit(this.filters);
   }
 
@@ -137,7 +137,7 @@ export class NgDatatableComponent implements OnInit {
     this.sortedDesc = desc;
 
     // Preform sort
-    this.process();
+    this._process();
   }
 
   updateSelected(index: number) {
