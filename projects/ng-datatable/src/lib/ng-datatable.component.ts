@@ -62,7 +62,7 @@ export class NgDatatableComponent implements OnInit {
     this.clearSelected();
     this.processedData = this._data;
     this.filters.forEach(f => this.processedData = this.processedData.filter(f));
-    if(this.sortedColumn != null) {
+    if(this.sortedColumn != null && this.processedData) {
       if (this.columns[this.sortedColumn].sortFn) {
         this.processedData = this.processedData.sort(this.columns[this.sortedColumn].sortFn);
       } else {
