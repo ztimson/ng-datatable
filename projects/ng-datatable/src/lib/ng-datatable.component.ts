@@ -29,7 +29,7 @@ export class NgDatatableComponent implements OnInit {
   filters: ((el?: any, i?: number, arr?: any[]) => boolean)[] = []; // Array of process functions to apply to data
   pages: number[] = []; // Array of possible pages
   pagedData: any[] = []; // The data for the current
-  processedData: any[]; // rows left after filtering
+  processedData: any[] = []; // rows left after filtering
   selectedRows = new Set<number>(); // Keep track of selected rows
   sortedColumn: number; // Column currently being sorted
   sortedDesc = false; // Is the sorted column being sorted in ascending or descending order
