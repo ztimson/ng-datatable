@@ -36,7 +36,7 @@ export class NgDatatableComponent implements OnInit {
   width = window.innerWidth; // Width of the screen. Used for hiding mobile columns
 
   // Fields ============================================================================================================
-  get count(): number { return this.processedData.length; } // Number of rows after filtering
+  get count(): number { return this.processedData ? this.processedData.length : 0; } // Number of rows after filtering
   private _data: any[] = []; // Original data entered into table
   get data(): any[] { return this.processedData; } // Return the processed data
   @Input() set data(data: any[]) {
