@@ -43,7 +43,7 @@ export class NgDatatableComponent implements OnInit {
   get data(): any[] { return this.processedData; } // Return the processed data
   @Input() set data(data: any[]) {
     this._data = data;
-    this._process();
+    this.refresh();
   }
 
   // ===================================================================================================================
@@ -60,7 +60,44 @@ export class NgDatatableComponent implements OnInit {
   }
 
   // Helpers ===========================================================================================================
-  private _process() {
+  _convertWidth(width) {
+    if(typeof width == 'number') return `${width}px`;
+    return width;
+  }
+
+  _dotNotation(obj: object, prop: string) {
+    return prop.split('.').reduce((obj, prop) => obj[prop], obj);
+  }
+
+  addFilter(...filters: ((row?: any, index?: number, arr?: any[]) => boolean)[]) {
+    this.filters = this.filters.concat(filters);
+    this.refresh();
+    this.filterChanged.emit(this.filters);
+  }
+
+  changePage(page: number) {
+    if(!this.paginate || page < 1 || page > this.pages.length) return;
+    this.page = page;
+    this.refresh();
+    this.pageChanged.emit(this.page);
+  }
+
+  clearFilters(update=true) {
+    this.filters = [];
+    if(update) this.refresh();
+    this.filterChanged.emit(this.filters);
+  }
+
+  clearSelected() {
+    let emit = this.selectedRows.size > 0;
+    this.selectedRows.clear();
+    if(emit) this.selectionChanged.emit([]);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) { this.width = event.target.innerWidth; }
+
+  refresh() {
     this.processing.emit(this.processedData);
     this.clearSelected();
     this.processedData = this._data;
@@ -88,43 +125,6 @@ export class NgDatatableComponent implements OnInit {
     this.finished.emit(this.processedData);
   }
 
-  _convertWidth(width) {
-    if(typeof width == 'number') return `${width}px`;
-    return width;
-  }
-
-  _dotNotation(obj: object, prop: string) {
-    return prop.split('.').reduce((obj, prop) => obj[prop], obj);
-  }
-
-  addFilter(...filters: ((row?: any, index?: number, arr?: any[]) => boolean)[]) {
-    this.filters = this.filters.concat(filters);
-    this._process();
-    this.filterChanged.emit(this.filters);
-  }
-
-  changePage(page: number) {
-    if(!this.paginate || page < 1 || page > this.pages.length) return;
-    this.page = page;
-    this._process();
-    this.pageChanged.emit(this.page);
-  }
-
-  clearFilters(update=true) {
-    this.filters = [];
-    if(update) this._process();
-    this.filterChanged.emit(this.filters);
-  }
-
-  clearSelected() {
-    let emit = this.selectedRows.size > 0;
-    this.selectedRows.clear();
-    if(emit) this.selectionChanged.emit([]);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) { this.width = event.target.innerWidth; }
-
   selectAll() {
     this.processedData.forEach((ignore, i) => this.selectedRows.add(i));
     this.selectionChanged.emit(this.processedData);
@@ -143,7 +143,7 @@ export class NgDatatableComponent implements OnInit {
     this.sortedDesc = desc;
 
     // Preform sort
-    this._process();
+    this.refresh();
   }
 
   updateSelected(index: number) {

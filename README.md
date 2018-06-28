@@ -107,6 +107,10 @@ Clear filters being applied to. Update can be set to false to prevent instant fi
 
 Clear all selected rows.
 
+#### refresh()
+
+Refreshes the grid
+
 ##### selectAll()
 
 Select all rows. Ignores pagination but not filtering.
