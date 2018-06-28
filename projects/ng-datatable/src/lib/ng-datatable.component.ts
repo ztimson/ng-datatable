@@ -67,8 +67,8 @@ export class NgDatatableComponent implements OnInit {
         this.processedData = this.processedData.sort(this.columns[this.sortedColumn].sortFn);
       } else {
         this.processedData = this.processedData.sort((a: any, b: any) => {
-          if (a[this.columns[this.sortedColumn].property] > b[this.columns[this.sortedColumn].property]) return 1;
-          if (a[this.columns[this.sortedColumn].property] < b[this.columns[this.sortedColumn].property]) return -1;
+          if (this._dotNotation(a, this.columns[this.sortedColumn].property) > this._dotNotation(b, this.columns[this.sortedColumn].property)) return 1;
+          if (this._dotNotation(a, this.columns[this.sortedColumn].property) < this._dotNotation(b, this.columns[this.sortedColumn].property)) return -1;
           return 0;
         });
       }
