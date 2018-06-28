@@ -64,12 +64,14 @@ Selector: `ng-datatable`
 | @Input() pageLength: number                               | Number of rows per page. Default 20                       |
 | @Input() page: number                                     | Current page                                              |
 | @Input() paginate: boolean                                | Paginate rows or display all at once. Default true        |
-| @Input() paginateCssClass: string                         | Class added to the paginator
+| @Input() paginateCssClass: string                         | Class added to the paginator                              |
 | @Input() selectionMode: null/'single'/'multi'             | Allow selecting none, single or multiple rows at once     |
 | @Input() showCheckbox: boolean                            | Show checkbox' for mass selecting                         |
 | @Input() tableLayout: 'auto'/'fixed'                      | CSS table layout. Defaults to 'auto'                      |
 | @Output() filterChanged: EventEmitter<(a, b) => 1/0/-1[]> | Applied filters                                           |
+| @Output() finished: EventEmitter<any[]>                   | Emits when finished processing data                       |
 | @Output() pageChanged: EventEmitter<number>               | New page                                                  |
+| @Output() processing: EventEmitter<any[]>                 | Emits when processing begins
 | @Output() selectionChanged: EventEmitter<any[]>           | Selected rows                                             |
 | pagedData: any[]                                          | Array of rows on current page after sorting and filtering |
 | processedData: any[]                                      | Array of remaining rows after sorting and filtering       |

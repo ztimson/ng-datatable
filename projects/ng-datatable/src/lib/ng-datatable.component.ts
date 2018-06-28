@@ -22,7 +22,9 @@ export class NgDatatableComponent implements OnInit {
 
   // Outputs ===========================================================================================================
   @Output() filterChanged = new EventEmitter<any[]>(); // Output when filters change
+  @Output() finished = new EventEmitter<any[]>(); // Fired after processing is finished
   @Output() pageChanged = new EventEmitter<number>(); // Output when page is changed
+  @Output() processing = new EventEmitter<any[]>(); // Fires when grid begins to process
   @Output() selectionChanged = new EventEmitter<any[]>(); // Output when selected rows changes
 
   // Properties ========================================================================================================
@@ -59,6 +61,7 @@ export class NgDatatableComponent implements OnInit {
 
   // Helpers ===========================================================================================================
   private _process() {
+    this.processing.emit(this.processedData);
     this.clearSelected();
     this.processedData = this._data;
     this.filters.forEach(f => this.processedData = this.processedData.filter(f));
@@ -83,6 +86,7 @@ export class NgDatatableComponent implements OnInit {
     } else {
       this.pagedData = this.processedData;
     }
+    this.finished.emit(this.processedData);
   }
 
   _convertWidth(width) {
