@@ -71,7 +71,7 @@ Selector: `ng-datatable`
 | @Output() filterChanged: EventEmitter<(a, b) => 1/0/-1[]> | Applied filters                                           |
 | @Output() finished: EventEmitter<any[]>                   | Emits when finished processing data                       |
 | @Output() pageChanged: EventEmitter<number>               | New page                                                  |
-| @Output() processing: EventEmitter<any[]>                 | Emits when processing begins
+| @Output() processing: EventEmitter<any[]>                 | Emits when processing begins                              |
 | @Output() selectionChanged: EventEmitter<any[]>           | Selected rows                                             |
 | pagedData: any[]                                          | Array of rows on current page after sorting and filtering |
 | processedData: any[]                                      | Array of remaining rows after sorting and filtering       |
