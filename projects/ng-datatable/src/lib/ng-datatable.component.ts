@@ -117,6 +117,7 @@ export class NgDatatableComponent implements OnInit {
 
     if(this.paginate && this.processedData) {
       this.pages = Array(Math.ceil(this.processedData.length / this.pageLength)).fill(0).map((ignore, i) => i + 1);
+      if(!this.page) this.page = 1;
       if(this.page > this.pages.length) this.page = this.pages.length;
       this.pagedData = this.processedData.filter((ignore, i) => i >= (this.page - 1) * this.pageLength && i < this.page * this.pageLength);
     } else {
