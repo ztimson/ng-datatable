@@ -37,7 +37,7 @@
         <td *ngIf="c.hide !== true && !(c.hideMobile === true && width < mobileBreakpoint)" class="ngdt-cell" (click)="updateSelected(i, c)">
           <ng-template #defaultTemplate let-value="value">{{value}}</ng-template>
           <ng-template [ngTemplateOutlet]="c.template || defaultTemplate"
-                       [ngTemplateOutletContext]="{object: row, value: _dotNotation(row, c.property)}">
+                       [ngTemplateOutletContext]="{object: row, key: c.property, value: _dotNotation(row, c.property)}">
           </ng-template>
         </td>
       </ng-container>
