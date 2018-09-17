@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
         return `Males: ${total.M}, Females: ${total.F}`;
       }
       },
-      {label: 'Age', property: 'age', initialSort: 'desc', hideMobile: true, template: this.ageTemplate}
+      {label: 'Age', canSelect: false, property: 'age', initialSort: 'desc', hideMobile: true, template: this.ageTemplate}
     ];
 
     this.search.subscribe(text => {

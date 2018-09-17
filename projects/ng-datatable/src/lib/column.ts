@@ -3,6 +3,7 @@ import {TemplateRef} from "@angular/core";
 export interface Column {
   aggregate?: (rows: any[]) => any;
   cssClass?: string; // CSS to add to column
+  canSelect?: boolean;
   hide?: boolean; // Hide column
   hideMobile?: boolean; // Hide column on mobile
   initialSort?: 'asc' | 'desc'; // Sort this column initially
