@@ -75,6 +75,11 @@ export class NgDatatableComponent implements OnInit {
     this.filterChanged.emit(this.filters);
   }
 
+  aggregate(col: Column) {
+    if(!col.aggregate) return '';
+    return col.aggregate(this.processedData.map(row => this._dotNotation(row, col.property)));
+  }
+
   changePage(page: number) {
     if(!this.paginate || page < 1 || page > this.pages.length) return;
     this.page = page;

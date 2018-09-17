@@ -48,6 +48,13 @@
       </td>
     </tr>
   </ng-container>
+  <tr class="ngdt-total">
+    <td *ngIf="showCheckbox && selectionMode !== null" class="ngdt-checkbox"></td>
+    <td *ngIf="expandedTemplate" class="ngdt-expand"></td>
+    <ng-container *ngFor="let c of columns">
+      <td class="ngdt-cell">{{aggregate(c)}}</td>
+    </ng-container>
+  </tr>
   </tbody>
 </table>
 <nav *ngIf="paginate" [class]="paginateCssClass + 'ngdt-paginator'" aria-label="Page navigation">
