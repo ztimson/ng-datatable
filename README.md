@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/ztimson/ng-datatable/tree/master.svg?style=svg)](https://circleci.com/gh/ztimson/ng-datatable/tree/master)
 
-A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind but its simple table structor makes it easy to style.
+A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind so it will be automatically styled if you have the css included but its simple table structor makes it easy to style.
 
 Features:
 
