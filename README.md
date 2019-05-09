@@ -19,8 +19,6 @@ Features:
 
 [View on NPM](https://www.npmjs.com/package/@ztimson/ng-datatable)
 
-[View the demo here](https://stackblitz.com/edit/angular-rzq6xm)
-
 ## Installing
 
 1.  Install package `npm install @ztimson/ng-datatable --save`
