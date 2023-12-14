@@ -3,7 +3,7 @@
   <br />
 
   <!-- Logo -->
-  <img src="https://git.zakscode.com/repo-avatars/2b4ee6ba1f2e2618bf7694e4a52fb56d1d0ea6abafa2dcbe496ab786b86d5a76" alt="Logo" width="200" height="200">
+  <img src="https://git.zakscode.com/repo-avatars/066f56124662dc95ddacf70bdc8839b98462c885e106728b342abe8bfb5be36a" alt="Logo" width="200" height="200">
 
   <!-- Title -->
   ### ng-datatable
