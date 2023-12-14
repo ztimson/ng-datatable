@@ -1,9 +1,9 @@
 Table CSS
 <input [(ngModel)]="tableCSS"> Selection Mode
 <select [(ngModel)]="selectionMode">
-  <option>None</option>
-  <option>single</option>
-  <option>multi</option>
+    <option>None</option>
+    <option>single</option>
+    <option>multi</option>
 </select>
 Checkbox
 <input type="checkbox" [(ngModel)]="checkbox"> Expandable
@@ -13,13 +13,13 @@ Checkbox
 <input placeholder="Search" (keyup)="search.next($event.target.value)">
 <br> Selected: {{table.selectedRows.size}}/{{table.processedData.length}}
 <ng-datatable #table [cssClass]="tableCSS" [columns]="columns" [data]="data" [expandedTemplate]="expandable ? expanded : null"
-  [showCheckbox]="checkbox" [paginate]="true" [selectionMode]="selectionMode == 'None' ? null : selectionMode" (rowSelected)="log($event)">
-  <ng-template #expanded let-object="object">
-    Hello {{object.firstName}} {{object.lastName}}, How are you today?
-    <span *ngIf="object.age < 18">I can see that you are under age.</span>
-    <span *ngIf="object.age > 84">I can see that you are over the average life expectancy.</span>
-  </ng-template>
-  <ng-template #age let-value="value">
-    <strong [ngClass]="{'text-success': value < 18, 'text-danger': value > 84}">{{value}}</strong>
-  </ng-template>
+              [showCheckbox]="checkbox" [paginate]="true" [selectionMode]="selectionMode == 'None' ? null : selectionMode" (rowSelected)="log($event)">
+    <ng-template #expanded let-object="object">
+        Hello {{object.firstName}} {{object.lastName}}, How are you today?
+        <span *ngIf="object.age < 18">I can see that you are under age.</span>
+        <span *ngIf="object.age > 84">I can see that you are over the average life expectancy.</span>
+    </ng-template>
+    <ng-template #age let-value="value">
+        <strong [ngClass]="{'text-success': value < 18, 'text-danger': value > 84}">{{value}}</strong>
+    </ng-template>
 </ng-datatable>

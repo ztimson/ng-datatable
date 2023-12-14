@@ -1,8 +1,53 @@
-# ng-datatable
+<!-- Header -->
+<div id="top" align="center">
+  <br />
 
-[![CircleCI](https://circleci.com/gh/ztimson/ng-datatable/tree/master.svg?style=svg)](https://circleci.com/gh/ztimson/ng-datatable/tree/master)
+  <!-- Logo -->
+  <img src="https://git.zakscode.com/repo-avatars/2b4ee6ba1f2e2618bf7694e4a52fb56d1d0ea6abafa2dcbe496ab786b86d5a76" alt="Logo" width="200" height="200">
 
-A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind so it will be automatically styled if you have the css included but its simple table structor makes it easy to style.
+  <!-- Title -->
+  ### ng-datatable
+
+  <!-- Description -->
+  **Deprecated:** Angular Table Building Library
+
+  <!-- Repo badges -->
+  [![Version](https://img.shields.io/badge/dynamic/json.svg?label=Version&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/ng-datatable/tags&query=$[0].name)](https://git.zakscode.com/ztimson/ng-datatable/tags)
+  [![Pull Requests](https://img.shields.io/badge/dynamic/json.svg?label=Pull%20Requests&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/ng-datatable&query=open_pr_counter)](https://git.zakscode.com/ztimson/ng-datatable/pulls)
+  [![Issues](https://img.shields.io/badge/dynamic/json.svg?label=Issues&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/ng-datatable&query=open_issues_count)](https://git.zakscode.com/ztimson/ng-datatable/issues)
+
+  <!-- Links -->
+
+  ---
+  <div>
+    <a href="https://git.zakscode.com/ztimson/ng-datatable/releases" target="_blank">Release Notes</a>
+    • <a href="https://git.zakscode.com/ztimson/ng-datatable/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
+    • <a href="https://git.zakscode.com/ztimson/ng-datatable/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Request a Feature</a>
+  </div>
+
+  ---
+</div>
+
+## Table of Contents
+- [ng-datatable](#top)
+    - [About](#about)
+      - [Demo](#demo)
+      - [Built With](#built-with)
+    - [Setup](#setup)
+      - [Production](#production)
+        - [Development](#development)
+    - [Documentation](#documentation)
+      - [NgDatatableComponent](#ngdatatablecomponent)
+      - [Column](#column)
+    - [License](#license)
+
+## About
+
+**Deprecated**
+
+
+A lightweight, feature rich table to display data. It is built with twitter bootstrap in mind so it will be automatically styled if you have the css included but its simple table structure makes it easy to style.
+
 
 Features:
 
@@ -16,13 +61,27 @@ Features:
 - Mobile column hiding
 - Checkboxes
 
-
 [View on NPM](https://www.npmjs.com/package/@ztimson/ng-datatable)
 
-## Installing
+### Built With
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
 
-1.  Install package `npm install @ztimson/ng-datatable --save`
-2.  Import into module
+## Setup
+
+<details>
+<summary>
+  <h3 id="production" style="display: inline">
+    Production
+  </h3>
+</summary>
+
+#### Prerequisites
+- [Node.js](https://nodejs.org/en/download)
+
+#### Instructions
+ 1. Install package `npm install @ztimson/ng-datatable --save`
+ 2. Import into module
 
 ```Typescript
 import {NgDatatableModule} from '@ztimsonm/ng-datatable'
@@ -37,13 +96,31 @@ import {NgDatatableModule} from '@ztimsonm/ng-datatable'
 export class AppModule { }
 ```
 
-3.  Add to template
+ 3. Add to template
 
 ```HTML
 <ng-datatable [columns]="columns" [data]="data"></ng-datatable>
 ```
+</details>
 
-## API
+<details>
+<summary>
+  <h3 id="development" style="display: inline">
+    Development
+  </h3>
+</summary>
+
+#### Prerequisites
+- [Node.js](https://nodejs.org/en/download)
+
+#### Instructions
+1. Install the dependencies: `npm install`
+2. Start the Angular server: `npm run start`
+3. Open [http://localhost:4200](http://localhost:4200)
+
+</details>
+
+## Documentation
 
 ### NgDatatableComponent
 
@@ -148,3 +225,9 @@ Exported As: `Column`
 | sortFn: (a, b) => 1/0/-1   | Custom function to sort rows by     |
 | template: TemplateRef<any> | Template to render row with         |
 | width: number/string       | CSS width property                  |
+
+
+## License
+Copyright © 2023 Zakary Timson | Available under the Apache 2.0 License
+
+See the [license](./LICENSE) for more information.
