@@ -28,7 +28,7 @@ jobs:
 
             -   name: Push to registry
                 if: ${{github.ref_name}} == "release"
-                uses: ztimson/actions/npm/publish
+                uses: ztimson/actions/npm/publish@develop
 
     tag:
         name: Tag Version
