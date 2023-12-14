@@ -4,12 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build-datatable": "ng build ng-datatable --prod",
-    "ci-publish": "cd dist/ng-datatable && ci-publish",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build ng-datatable --prod"
   },
   "private": true,
   "dependencies": {
