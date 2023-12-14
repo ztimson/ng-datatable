@@ -31,7 +31,6 @@
 ## Table of Contents
 - [ng-datatable](#top)
     - [About](#about)
-      - [Demo](#demo)
       - [Built With](#built-with)
     - [Setup](#setup)
       - [Production](#production)
