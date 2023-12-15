@@ -25,6 +25,7 @@ jobs:
     tag:
         name: Tag Version
         needs: build
+        if: ${{github.ref_name}} == develop
         runs-on: ubuntu-latest
         container: node:8
         steps:
