@@ -22,12 +22,9 @@ jobs:
             -   name: Upload Artifacts
                 uses: actions/upload-artifact@v3
                 with:
-                    path: ./dist/ng-datatable
+                    name: ng-datatable
+                    path: dist
                     retention-days: 7
-
-            -   name: Push to registry
-                if: ${{github.ref_name}} == "production"
-                uses: ztimson/actions/npm/publish@develop
 
     tag:
         name: Tag Version
