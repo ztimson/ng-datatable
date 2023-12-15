@@ -18,18 +18,9 @@ jobs:
 
             -   name: Build Project
                 run: npm run build
-                
-            -   name: Compress Output
-                uses: ztimson/actions/tar@develop
-                with:
-                    pattern: dist/ng-datatable
 
-            -   name: Upload Artifacts
-                uses: actions/upload-artifact@v3
-                with:
-                    name: ng-datatable
-                    path: archive.tar.gz
-                    retention-days: 7
+            -   name: Upload to Registry
+                uses: ztimson/actions/npm/publish@develop
 
     tag:
         name: Tag Version
