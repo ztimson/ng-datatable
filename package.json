@@ -1,12 +1,11 @@
 {
-  "name": "sandbox",
+  "name": "ztimson/ng-datatable",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ng-datatable --prod"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/common": "^6.0.0",
